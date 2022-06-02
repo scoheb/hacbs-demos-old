@@ -1,7 +1,0 @@
-apiVersion: appstudio.redhat.com/v1alpha1
-kind: Application
-metadata:
-  name: hacbsdemoapp
-spec:
-  description: HACBS Demo App
-  displayName: HACBS Demo App
