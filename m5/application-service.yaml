@@ -1,0 +1,11 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: applicationservice
+spec:
+  componentName: applicationservice
+  application: hacbsdemoapp
+  source:
+    git:
+      url: https://github.com/redhat-appstudio/application-service
+      dockerfileUrl: https://github.com/redhat-appstudio/application-service/blob/main/Dockerfile
