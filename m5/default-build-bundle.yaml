@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: build-pipelines-defaults
 data:
-  default_build_bundle: "quay.io/redhat-appstudio/hacbs-templates-bundle:07a71301f02e9e32c8bedcc3f6944f1aec873566" 
+  default_build_bundle: "quay.io/redhat-appstudio/hacbs-templates-bundle:latest" 
