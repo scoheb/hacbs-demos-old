@@ -1,0 +1,8 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Release
+metadata:
+  name: m5-release-manual-2
+  namespace: demo
+spec:
+  applicationSnapshot: m5-application-c4vzl
+  releaseLink: m5-release-link-demo

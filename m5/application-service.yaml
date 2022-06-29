@@ -4,7 +4,7 @@ metadata:
   name: applicationservice
 spec:
   componentName: applicationservice
-  application: hacbsdemoapp
+  application: m5-application
   source:
     git:
       url: https://github.com/redhat-appstudio/application-service

@@ -1,0 +1,11 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: helloworld
+spec:
+  componentName: helloworld
+  application: m5-application
+  source:
+    git:
+      url: https://github.com/scoheb/go-hello-world.git
+      dockerfileUrl: https://github.com/scoheb/go-hello-world/blob/main/Dockerfile
