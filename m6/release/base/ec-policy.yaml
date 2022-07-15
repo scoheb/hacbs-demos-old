@@ -1,0 +1,14 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: EnterpriseContractPolicy
+metadata:
+  name: m6-policy
+spec:
+  description: Red Hat's enterprise requirements
+  exceptions:
+    nonBlocking:
+    - not_useful
+    - test:conftest-clair
+  sources:
+  - git:
+      repository: https://github.com/hacbs-contract/ec-policies
+      revision: m5-demo

@@ -1,0 +1,10 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: apicurio
+spec:
+  componentName: apicurio
+  application: appstudio
+  source:
+    git:
+      url: https://github.com/Apicurio/apicurio-registry.git
