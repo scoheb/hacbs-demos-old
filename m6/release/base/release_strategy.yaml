@@ -5,13 +5,13 @@ metadata:
   namespace: managed-shebert
 spec:
   pipeline: m6-release-pipeline
-  bundle: quay.io/hacbs-release/m5-release-pipeline:main
+  bundle: quay.io/scoheb/m6-release-pipeline:m6-v2
   policy: m6-policy
   params:
     - name: extraConfigGitUrl
-      value: https://github.com/davidmogar/strategy-configs.git
+      value: https://github.com/scoheb/strategy-configs.git
     - name: extraConfigPath
-      value: m5-2.yaml
+      value: m6.yaml
     - name: extraConfigRevision # optional field, default is main
       value: main
   serviceAccount: m6-service-account

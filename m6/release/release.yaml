@@ -1,8 +1,8 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Release
 metadata:
-  name: m5-release
-  namespace: demo
+  name: m6-release
+  namespace: shebert
 spec:
-  applicationSnapshot: m5-snapshot
-  releaseLink: m5-release-link-demo
+  applicationSnapshot: appstudio-w6rht
+  releaseLink: m6-release-link-shebert
