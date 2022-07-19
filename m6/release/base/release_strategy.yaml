@@ -5,7 +5,7 @@ metadata:
   namespace: managed-shebert
 spec:
   pipeline: m6-release-pipeline
-  bundle: quay.io/scoheb/m6-release-pipeline:m6-v2
+  bundle: quay.io/hacbs-release/m6-release-pipeline:main
   policy: m6-policy
   params:
     - name: extraConfigGitUrl
