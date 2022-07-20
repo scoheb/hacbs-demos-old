@@ -1,9 +1,9 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Component
 metadata:
-  name: javaspringboot
+  name: java-springboot
 spec:
-  componentName: javaspringboot
+  componentName: java-springboot
   application: appstudio
   source:
     git:

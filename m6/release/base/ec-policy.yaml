@@ -11,4 +11,4 @@ spec:
   sources:
   - git:
       repository: https://github.com/hacbs-contract/ec-policies
-      revision: m5-demo
+      revision: m6-demo-test
