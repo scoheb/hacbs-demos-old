@@ -1,0 +1,10 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: dc-metro-map
+spec:
+  componentName: dc-metro-map
+  application: appstudio
+  source:
+    git:
+      url: https://github.com/sbose78/dc-metro-map
