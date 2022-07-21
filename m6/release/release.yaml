@@ -4,5 +4,5 @@ metadata:
   name: m6-release
   namespace: shebert
 spec:
-  applicationSnapshot: appstudio-mhgks
+  applicationSnapshot: appstudio-p85pw
   releaseLink: m6-release-link-shebert
