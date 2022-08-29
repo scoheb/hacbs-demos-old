@@ -6,12 +6,12 @@ download your docker config json file from Quay and place it in \<HOME\>/docker.
 
 create secret in DEVWORKSPACE
 
-> \# kubectl create secret docker-registry  redhat-appstudio-registry-pull-secret -n <DEVWORKSPACE> --from-file=.dockerconfigjson=<HO
+> \# kubectl create secret docker-registry  redhat-appstudio-registry-pull-secret -n \<DEVWORKSPACE\> --from-file=.dockerconfigjson=<HO
 OME>/docker.config
 
 apply default build bundle
 
-> \# oc apply -f setup/default-build-bundle.yaml -n <DEVWORKSPACE>
+> \# oc apply -f setup/default-build-bundle.yaml -n \<DEVWORKSPACE\>
 
 update values for *namspace* and *target* to correspond to the values of DEVWORKSPACE and MANAGEDWORKSPACE in:
 
@@ -36,4 +36,3 @@ create application and component
 verify that build has started in DEVWORKSPACE
 
 once build complete, release should executed in MANAGEDWORKSPACE
-
