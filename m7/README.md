@@ -2,7 +2,7 @@
 
 create DEVWORKSPACE and MANAGEDWORKSPACE
 
-download your docker config json file from Quay and place it in <HOME>/docker.config
+download your docker config json file from Quay and place it in \<HOME\>/docker.config
 
 create secret in DEVWORKSPACE
 
