@@ -5,6 +5,7 @@ metadata:
   namespace: managed
 spec:
   application: appstudio
+  environment: production
   origin:
     namespace: dev
   releaseStrategy: m6-strategy
