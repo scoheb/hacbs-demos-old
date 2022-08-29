@@ -1,0 +1,8 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Release
+metadata:
+  name: m6-release
+  namespace: dev
+spec:
+  applicationSnapshot: appstudio-t4vh6
+  releasePlan: demo
