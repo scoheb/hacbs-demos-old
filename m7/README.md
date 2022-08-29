@@ -6,8 +6,7 @@ download your docker config json file from Quay and place it in \<HOME\>/docker.
 
 create secret in DEVWORKSPACE
 
-> \# kubectl create secret docker-registry  redhat-appstudio-registry-pull-secret -n \<DEVWORKSPACE\> --from-file=.dockerconfigjson=<HO
-OME>/docker.config
+> \# kubectl create secret docker-registry redhat-appstudio-registry-pull-secret -n <DEVWORKSPACE> --from-file=.dockerconfigjson=<HOME>/docker.config
 
 apply default build bundle
 
