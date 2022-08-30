@@ -1,8 +1,8 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Release
 metadata:
-  name: m6-release
-  namespace: dev
+  name: m7-release
+  namespace: ralphjbean
 spec:
   applicationSnapshot: appstudio-t4vh6
   releasePlan: demo

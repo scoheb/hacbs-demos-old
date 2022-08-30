@@ -2,10 +2,10 @@ apiVersion: appstudio.redhat.com/v1alpha1
 kind: ReleasePlanAdmission
 metadata:
   name: demo
-  namespace: managed
+  namespace: managed-rbean
 spec:
   application: appstudio
   environment: production
   origin:
-    namespace: dev
-  releaseStrategy: m6-strategy
+    namespace: ralphjbean
+  releaseStrategy: m7-strategy

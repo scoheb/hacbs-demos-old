@@ -1,8 +1,8 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: EnterpriseContractPolicy
 metadata:
-  name: m6-policy
-  namespace: managed
+  name: m7-policy
+  namespace: managed-rbean
 spec:
   description: Red Hat's enterprise requirements
   exceptions:
