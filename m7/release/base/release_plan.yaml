@@ -6,7 +6,7 @@ metadata:
   name: demo
   namespace: ralphjbean
 spec:
-  application: appstudio
+  application: demo-app
   displayName: demo
   target:
     namespace: managed-rbean
