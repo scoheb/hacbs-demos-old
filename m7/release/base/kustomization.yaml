@@ -2,6 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - release_strategy.yaml
-  - release_links.yaml
+  - release_plan.yaml
+  - release_plan_admission.yaml
   - persistent_volume_claim.yaml
   - service_account.yaml
+  - ec-policy.yaml
+  - secret-role.yaml
+  #- environment.yaml
