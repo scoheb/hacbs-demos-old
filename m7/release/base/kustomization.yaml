@@ -8,4 +8,4 @@ resources:
   - service_account.yaml
   - ec-policy.yaml
   - secret-role.yaml
-  #- environment.yaml
+  - environment.yaml
