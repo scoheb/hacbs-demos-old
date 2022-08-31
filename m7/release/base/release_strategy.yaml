@@ -4,7 +4,7 @@ metadata:
   name: m7-strategy
   namespace: managed-rbean
 spec:
-  pipeline: m7-release-pipeline
+  pipeline: m6-release-pipeline
   bundle: quay.io/hacbs-release/m6-release-pipeline:main
   policy: m7-policy
   params:
