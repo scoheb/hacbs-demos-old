@@ -5,7 +5,7 @@ metadata:
   namespace: managed-rbean
 spec:
   pipeline: m7-release-pipeline
-  bundle: quay.io/hacbs-release/m7-release-pipeline:main
+  bundle: quay.io/hacbs-release/m6-release-pipeline:main
   policy: m7-policy
   params:
     - name: extraConfigGitUrl
