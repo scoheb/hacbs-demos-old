@@ -1,7 +1,7 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: ReleasePlanAdmission
 metadata:
-  name: demo
+  name: sre-production
   namespace: managed-rbean
 spec:
   application: demo-app
