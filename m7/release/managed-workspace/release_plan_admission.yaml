@@ -5,7 +5,7 @@ metadata:
   namespace: managed-rbean
 spec:
   application: demo-app
-  environment: production
+  environment: sre-production
   origin:
     namespace: ralphjbean
   releaseStrategy: m7-strategy
