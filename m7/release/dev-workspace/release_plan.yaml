@@ -3,10 +3,10 @@ kind: ReleasePlan
 metadata:
   labels:
     release.appstudio.openshift.io/auto-release: 'true'
-  name: demo
-  namespace: dev
+  name: sre-production
+  namespace: ralphjbean
 spec:
-  application: appstudio
-  displayName: demo
+  application: demo-app
+  displayName: SRE Production
   target:
-    namespace: managed
+    namespace: managed-rbean

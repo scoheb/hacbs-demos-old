@@ -1,8 +1,8 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Environment
 metadata:
-  name: production
-  namespace: managed
+  name: sre-production
+  namespace: managed-rbean
 spec:
   deploymentStrategy: Manual
   displayName: demo production

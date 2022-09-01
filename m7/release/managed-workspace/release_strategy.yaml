@@ -1,17 +1,17 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: ReleaseStrategy
 metadata:
-  name: m6-strategy
-  namespace: managed
+  name: m7-strategy
+  namespace: managed-rbean
 spec:
   pipeline: m6-release-pipeline
   bundle: quay.io/hacbs-release/m6-release-pipeline:main
-  policy: m6-policy
+  policy: m7-policy
   params:
     - name: extraConfigGitUrl
-      value: https://github.com/scoheb/strategy-configs.git
+      value: https://github.com/ralphbean/strategy-configs.git
     - name: extraConfigPath
-      value: m6.yaml
+      value: m7.yaml
     - name: extraConfigRevision # optional field, default is main
       value: main
-  serviceAccount: m6-service-account
+  serviceAccount: m7-service-account

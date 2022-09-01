@@ -2,17 +2,17 @@
 set -eux
 
 COSIGN_SECRET_NAME="cosign-public-key"
-NAMESPACE="managed"
+NAMESPACE="managed-rbean"
 QUAY_ROBOT_ACCOUNT="hacbs-release-tests+m5_robot_account"
 QUAY_SECRET_NAME="hacbs-release-tests-token"
-RESOURCES_PATH="base"
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
 
-tempDir=$(mktemp -d /tmp/m6.XXX)
+tempDir=$(mktemp -d /tmp/m7.XXX)
 trap 'rm -rf "$tempDir"' EXIT
 
 create_resources() {
-  kubectl apply -k "$SCRIPT_DIR/$RESOURCES_PATH"
+  kubectl apply -k "$SCRIPT_DIR/dev-workspace"
+  kubectl apply -k "$SCRIPT_DIR/managed-workspace"
 }
 
 create_quay_secret() {
