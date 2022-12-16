@@ -1,0 +1,11 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: java-springboot
+spec:
+  componentName: java-springboot
+  application: metro
+  containerImage: quay.io/hacbs-release-tests/java-springboot:latest
+  source:
+    git:
+      url: https://github.com/scoheb/devfile-sample-java-springboot-basic

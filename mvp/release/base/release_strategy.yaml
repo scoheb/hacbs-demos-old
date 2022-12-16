@@ -1,0 +1,17 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleaseStrategy
+metadata:
+  name: mvp-strategy
+  namespace: managed-release-team
+spec:
+  pipeline: m6-release-pipeline
+  bundle: quay.io/hacbs-release/m6-release-pipeline:main
+  policy: mvp-policy
+  params:
+    - name: extraConfigGitUrl
+      value: https://github.com/scoheb/strategy-configs.git
+    - name: extraConfigPath
+      value: m6.yaml
+    - name: extraConfigRevision # optional field, default is main
+      value: main
+  serviceAccount: release-service-account

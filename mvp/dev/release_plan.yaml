@@ -1,0 +1,11 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleasePlan
+metadata:
+  labels:
+    release.appstudio.openshift.io/auto-release: 'true'
+  name: demo
+  namespace: shebert
+spec:
+  application: appstudio
+  displayName: demo
+  target: managed-release-team

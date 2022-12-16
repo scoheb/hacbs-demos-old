@@ -1,0 +1,10 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleasePlanAdmission
+metadata:
+  name: demo
+  namespace: managed-release-team
+spec:
+  application: appstudio
+  environment: production
+  origin: shebert
+  releaseStrategy: mvp-strategy
