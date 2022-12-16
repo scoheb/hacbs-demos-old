@@ -65,11 +65,11 @@ Record the name of the latest snapshot -> {snapshot name}
 
 > \# oc edit snapshot/{snapshot name}
 
-Add label > pac.test.appstudio.openshift.io/event-type: push 
+Add label *pac.test.appstudio.openshift.io/event-type: push*
 
 Once build completes, update Snapshot as described above.
 
-Once the Interation Service reconciles the newly updated Snapsgot, a Release will get created 
+Once the Interation Service reconciles the newly updated Snapshot, a Release will get created 
 and a pipeline will execute in MANAGEDWORKSPACE
 
 Login as the Managed Workspace User
