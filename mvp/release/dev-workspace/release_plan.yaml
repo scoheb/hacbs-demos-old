@@ -4,7 +4,6 @@ metadata:
   labels:
     release.appstudio.openshift.io/auto-release: 'true'
   name: demo
-  namespace: shebert
 spec:
   application: appstudio
   displayName: demo

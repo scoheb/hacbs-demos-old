@@ -13,6 +13,5 @@ spec:
     - tasks
     - test
   sources:
-  - git:
-      repository: https://github.com/hacbs-contract/ec-policies
-      revision: main
+  - https://github.com/hacbs-contract/ec-policies:main
+

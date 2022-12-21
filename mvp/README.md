@@ -11,7 +11,7 @@ Login as the Dev User
 
 create secret in DEVWORKSPACE
 
-> \# kubectl create secret docker-registry redhat-appstudio-registry-pull-secret -n <DEVWORKSPACE> --from-file=.dockerconfigjson=<HOME>/docker.config
+> \# kubectl create secret docker-registry redhat-appstudio-registry-pull-secret -n \<DEVWORKSPACE\> --from-file=.dockerconfigjson=\<HOME\>/docker.config
 
 apply default build bundle
 
@@ -23,25 +23,24 @@ update values for *namespace* and *target* to correspond to the values of DEVWOR
 
 Create release plan
 
-> \# oc apply -f dev/release_plan.yaml -n \<DEVWORKSPACE\>
+> \# oc apply -f release/dev-workspace/release_plan.yaml -n \<DEVWORKSPACE\>
 
 Update values for *namespace* and *target* to correspond to the values of DEVWORKSPACE and MANAGEDWORKSPACE in:
 
-* release/base/*
-* release/admin/*
+* release/*
 
 Update variables in: 
 
-* release/bootstrap.sh
-* release/admin-bootstrap.sh
+* release/managed-workspace/regular/bootstrap.sh
+* release/managed-workspace/admin/admin-bootstrap.sh
 
 Login as the Managed Workspace User
 
-> \# sh release/bootstrap.sh
+> \# sh release/managed-workspace/regular/bootstrap.sh
 
 Login as a Cluster Admin User
 
-> \# sh release/admin-bootstrap.sh
+> \# sh release/managed-workspace/admin/admin-bootstrap.sh
 
 Login as the Dev User
 

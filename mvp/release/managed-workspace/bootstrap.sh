@@ -5,7 +5,7 @@ COSIGN_SECRET_NAME="cosign-public-key"
 NAMESPACE="managed-release-team"
 QUAY_ROBOT_ACCOUNT="hacbs-release-tests+m5_robot_account"
 QUAY_SECRET_NAME="hacbs-release-tests-token"
-RESOURCES_PATH="base"
+RESOURCES_PATH="regular"
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
 
 tempDir=$(mktemp -d /tmp/m6.XXX)
