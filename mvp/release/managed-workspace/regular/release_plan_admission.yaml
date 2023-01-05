@@ -6,5 +6,5 @@ metadata:
 spec:
   application: appstudio
   environment: production
-  origin: shebert
+  origin: dev-release-team
   releaseStrategy: mvp-strategy
