@@ -3,4 +3,6 @@ kind: Kustomization
 resources:
   - persistent_volume_claim.yaml
   - service_account.yaml
-  - secret-role.yaml
+  #- secret-role.yaml
+  # no longer needed after
+  # validating https://issues.redhat.com/browse/HACBS-1522
