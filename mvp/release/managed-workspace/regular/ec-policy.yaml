@@ -12,6 +12,11 @@ spec:
     - java
     - tasks
     - test
+  publicKey: |-
+    -----BEGIN PUBLIC KEY-----
+    MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE+mypw1Z/vERWHHFhdNuhB/FQd1Iu
+    LKDQEdGmyiilvgAeMB6XyLcyssIxlfonnXTgU2BP0DV9sSnbRId6+9oAiw==
+    -----END PUBLIC KEY-----
   sources:
     - data:
         - "git::https://github.com/hacbs-contract/ec-policies.git//data"

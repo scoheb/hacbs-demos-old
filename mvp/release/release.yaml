@@ -1,8 +1,8 @@
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: Release
 metadata:
-  name: m6-release
-  namespace: dev
+  name: mvp-manual-release
+  namespace: dev-release-team
 spec:
-  applicationSnapshot: metro-6nvkp
+  snapshot: appstudio-krk78
   releasePlan: demo
