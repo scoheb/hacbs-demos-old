@@ -8,3 +8,14 @@ spec:
   application: appstudio
   displayName: demo
   target: managed-release-team
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleasePlan
+metadata:
+  labels:
+    release.appstudio.openshift.io/auto-release: 'true'
+  name: deploy-to-prod
+spec:
+  application: simple-python
+  displayName: deploy-to-prod
+  target: managed-release-team

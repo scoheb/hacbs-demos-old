@@ -1,0 +1,8 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Release
+metadata:
+  name: mvp-manual-deploy-release
+  namespace: dev-release-team
+spec:
+  snapshot: simple-python-wgf9s
+  releasePlan: deploy-to-prod

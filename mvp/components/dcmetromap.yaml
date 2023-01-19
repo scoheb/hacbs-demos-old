@@ -2,10 +2,12 @@ apiVersion: appstudio.redhat.com/v1alpha1
 kind: Component
 metadata:
   name: dc-metro-map
+  annotations:
+    pipelinesascode: '1'
 spec:
   componentName: dc-metro-map
   application: appstudio
   containerImage: quay.io/hacbs-release-tests/dcmetromap:latest
   source:
     git:
-      url: https://github.com/sbose78/dc-metro-map
+      url: https://github.com/scoheb/dc-metro-map
