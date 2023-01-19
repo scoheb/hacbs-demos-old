@@ -5,6 +5,16 @@ metadata:
   namespace: managed-release-team
 spec:
   application: appstudio
-  environment: production
   origin: dev-release-team
   releaseStrategy: mvp-strategy
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleasePlanAdmission
+metadata:
+  name: simple-python
+  namespace: managed-release-team
+spec:
+  application: simple-python
+  environment: production
+  origin: dev-release-team
+  releaseStrategy: mvp-deploy-strategy

@@ -7,3 +7,8 @@ spec:
   deploymentStrategy: Manual
   displayName: demo production
   type: POC
+  ## This is needed since the integration will try to deploy to a non-ephemeral env
+  ## that has an empty parentEnvironment. This will cause a collision with ArgcoCD
+  ## Therefore, we simply add a non-existent environment so it does attempt the deployment
+  #
+  parentEnvironment: non-existent-environment-to-fool-integration-service
