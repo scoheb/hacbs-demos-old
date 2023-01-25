@@ -17,8 +17,8 @@ Should you need to use different values follow these steps:
   - release/managed-workspace/regular/bootstrap.sh
   - release/managed-workspace/admin/admin-bootstrap.sh
 
-NOTE: Since each workspace is associated to only one user, you will have to switch back and forth using login
-commands to access each namespace properly.
+**NOTE: Since each workspace is associated to only one user, you will have to switch back and forth using login
+commands to access each namespace properly.**
 
 Download your docker config json file from Quay and place it in $HOME/docker.config
 
