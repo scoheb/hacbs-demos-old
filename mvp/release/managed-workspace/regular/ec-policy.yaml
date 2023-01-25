@@ -7,15 +7,16 @@ spec:
   description: Red Hat's enterprise requirements
   exceptions:
     nonBlocking:
-    - not_useful
     - attestation_task_bundle
     - java
     - tasks
     - test
+    - hermetic_build_task.build_task_not_hermetic
+    - buildah_build_task.dockerfile_param_external_source
   publicKey: |-
     -----BEGIN PUBLIC KEY-----
-    MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE+mypw1Z/vERWHHFhdNuhB/FQd1Iu
-    LKDQEdGmyiilvgAeMB6XyLcyssIxlfonnXTgU2BP0DV9sSnbRId6+9oAiw==
+    MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEODgxyIz09vBqJlXXzjp/X2h17WIt
+    jCVQhnDYVWHvXhw6rgqGeg6NTUxIEhRQqQZaF9mcBotHkuYGJfYZbai+FA==
     -----END PUBLIC KEY-----
   sources:
     - data:
