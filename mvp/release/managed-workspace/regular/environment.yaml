@@ -2,13 +2,13 @@ apiVersion: appstudio.redhat.com/v1alpha1
 kind: Environment
 metadata:
   name: production
-  namespace: managed-release-team
+  namespace: managed-release-team-tenant
 spec:
   deploymentStrategy: Manual
   displayName: demo production
   type: POC
-  ## This is needed since the integration will try to deploy to a non-ephemeral env
-  ## that has an empty parentEnvironment. This will cause a collision with ArgcoCD
-  ## Therefore, we simply add a non-existent environment so it does attempt the deployment
+  ## This is needed since the integration service will try to deploy to a non-ephemeral env
+  ## that has an empty parentEnvironment. This will cause a collision with ArgcoCD.
+  ## Therefore, we simply add a non-existent environment, so it does attempt a deployment
   #
   parentEnvironment: non-existent-environment-to-fool-integration-service

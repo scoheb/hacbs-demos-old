@@ -2,7 +2,7 @@ apiVersion: appstudio.redhat.com/v1alpha1
 kind: Release
 metadata:
   name: mvp-manual-release
-  namespace: dev-release-team
+  namespace: dev-release-team-tenant
 spec:
-  snapshot: appstudio-krk78
+  snapshot: appstudio-2zgtj
   releasePlan: demo

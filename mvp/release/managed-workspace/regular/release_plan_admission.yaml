@@ -2,19 +2,19 @@ apiVersion: appstudio.redhat.com/v1alpha1
 kind: ReleasePlanAdmission
 metadata:
   name: demo
-  namespace: managed-release-team
+  namespace: managed-release-team-tenant
 spec:
   application: appstudio
-  origin: dev-release-team
+  origin: dev-release-team-tenant
   releaseStrategy: mvp-strategy
 ---
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: ReleasePlanAdmission
 metadata:
   name: simple-python
-  namespace: managed-release-team
+  namespace: managed-release-team-tenant
 spec:
   application: simple-python
   environment: production
-  origin: dev-release-team
+  origin: dev-release-team-tenant
   releaseStrategy: mvp-deploy-strategy

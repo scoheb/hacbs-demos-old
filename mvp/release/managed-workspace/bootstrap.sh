@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eux
 
-NAMESPACE="managed-release-team"
+NAMESPACE="managed-release-team-tenant"
 RESOURCES_PATH="regular"
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
 

@@ -4,8 +4,16 @@ Create DEVWORKSPACE and MANAGEDWORKSPACE namespaces
 
 We'll use
 
-- DEVWORKSPACE = dev-release-team
-- MANAGEDWORKSPACE = managed-release-team
+- DEVWORKSPACE = dev-release-team-tenant
+- MANAGEDWORKSPACE = managed-release-team-tenant
+
+Ensure both have the label:
+
+```
+kubectl label namespaces dev-release-team-tenant argocd.argoproj.io/managed-by=gitops-service-argocd
+kubectl label namespaces managed-release-team-tenant argocd.argoproj.io/managed-by=gitops-service-argocd
+```
+
 
 Should you need to use different values follow these steps:
 
@@ -26,11 +34,11 @@ Login as the Dev User (use [registration service](https://registration-service-t
 
 Create secret in DEVWORKSPACE
 
-`kubectl create secret docker-registry redhat-appstudio-registry-pull-secret -n dev-release-team --from-file=.dockerconfigjson=$HOME/docker.config`
+`kubectl create secret docker-registry redhat-appstudio-registry-pull-secret -n dev-release-team-tenant --from-file=.dockerconfigjson=$HOME/docker.config`
 
 Create release plan
 
-`oc apply -f release/dev-workspace/release_plan.yaml -n dev-release-team`
+`oc apply -f release/dev-workspace/release_plan.yaml -n dev-release-team-tenant`
 
 Login as a Cluster Admin User using Openshift Console
 
@@ -54,7 +62,7 @@ Login as a Cluster Admin User using Openshift Console
 
 Link service accounts to secrets in DEVWORKSPACE
 
-`oc secrets link pipeline redhat-appstudio-registry-pull-secret --for=pull,mount -n dev-release-team`
+`oc secrets link pipeline redhat-appstudio-registry-pull-secret --for=pull,mount -n dev-release-team-tenant`
 
 Create image pull secret that will be used by the Release Service pipeline account in MANAGEDWORKSPACE
 
@@ -63,24 +71,24 @@ Create image pull secret that will be used by the Release Service pipeline accou
 - Download the **Kubernetes Secret** as a file
 - Run oc apply as follows:
 
-`oc apply -f ~/Downloads/hacbs-release-tests-m5-robot-account-secret.yml -n managed-release-team`
+`oc apply -f ~/Downloads/hacbs-release-tests-m5-robot-account-secret.yml -n managed-release-team-tenant`
 
 Link this new secret to the Release Service pipeline account in MANAGEDWORKSPACE
 
-`oc secrets link release-service-account hacbs-release-tests-m5-robot-account-pull-secret --for=mount -n managed-release-team`
+`oc secrets link release-service-account hacbs-release-tests-m5-robot-account-pull-secret --for=mount -n managed-release-team-tenant`
 
 Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)
 
 Create applications and components
 
 ```
-oc apply -f appstudio-application.yaml
-oc apply -f simple-python-application.yaml
+oc apply -f appstudio-application.yaml -n dev-release-team-tenant
+oc apply -f simple-python-application.yaml -n dev-release-team-tenant
 ```
 
 ```
-oc apply -f components/dcmetromap.yaml
-oc apply -f components/devfile-sample-python-basic.yaml
+oc apply -f components/dcmetromap.yaml -n dev-release-team-tenant
+oc apply -f components/devfile-sample-python-basic.yaml -n dev-release-team-tenant
 ```
 
 Verify that builds have started in DEVWORKSPACE
@@ -97,7 +105,7 @@ Clone the release-utils repo
 ```
 git clone https://github.com/hacbs-release/release-utils.git
 cd release-utils
-./copy-application.sh managed-release-team -a dev-release-team/simple-python
+./copy-application.sh managed-release-team-tenant -a dev-release-team-tenant/simple-python
 ```
 
 Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)

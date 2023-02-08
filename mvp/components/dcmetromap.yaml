@@ -7,7 +7,6 @@ metadata:
 spec:
   componentName: dc-metro-map
   application: appstudio
-  containerImage: quay.io/hacbs-release-tests/dcmetromap:latest
   source:
     git:
       url: https://github.com/scoheb/dc-metro-map
