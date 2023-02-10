@@ -10,8 +10,8 @@ We'll use
 Ensure both have the label:
 
 ```
-kubectl label namespaces dev-release-team-tenant argocd.argoproj.io/managed-by=gitops-service-argocd
-kubectl label namespaces managed-release-team-tenant argocd.argoproj.io/managed-by=gitops-service-argocd
+oc label namespaces dev-release-team-tenant argocd.argoproj.io/managed-by=gitops-service-argocd
+oc label namespaces managed-release-team-tenant argocd.argoproj.io/managed-by=gitops-service-argocd
 ```
 
 
@@ -34,7 +34,7 @@ Login as the Dev User (use [registration service](https://registration-service-t
 
 Create secret in DEVWORKSPACE
 
-`kubectl create secret docker-registry redhat-appstudio-registry-pull-secret -n dev-release-team-tenant --from-file=.dockerconfigjson=$HOME/docker.config`
+`oc create secret docker-registry redhat-appstudio-registry-pull-secret -n dev-release-team-tenant --from-file=.dockerconfigjson=$HOME/docker.config`
 
 Create release plan
 
@@ -64,18 +64,13 @@ Link service accounts to secrets in DEVWORKSPACE
 
 `oc secrets link pipeline redhat-appstudio-registry-pull-secret --for=pull,mount -n dev-release-team-tenant`
 
-Create image pull secret that will be used by the Release Service pipeline account in MANAGEDWORKSPACE
+Create secret that will be used by the Release Service pipeline account in MANAGEDWORKSPACE to push content to quay
 
-- Login to quay and navigate the robot account that has push permissions
-- From settings, click **View Credentials**
-- Download the **Kubernetes Secret** as a file
-- Run oc apply as follows:
-
-`oc apply -f ~/Downloads/hacbs-release-tests-m5-robot-account-secret.yml -n managed-release-team-tenant`
-
-Link this new secret to the Release Service pipeline account in MANAGEDWORKSPACE
-
-`oc secrets link release-service-account hacbs-release-tests-m5-robot-account-pull-secret --for=mount -n managed-release-team-tenant`
+```
+git clone https://github.com/hacbs-release/release-utils.git
+cd release-utils
+./setup-quay-push-secret.sh
+```
 
 Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)
 
