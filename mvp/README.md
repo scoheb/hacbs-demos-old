@@ -25,22 +25,29 @@ Should you need to use different values follow these steps:
   - release/managed-workspace/regular/bootstrap.sh
   - release/managed-workspace/admin/admin-bootstrap.sh
 
-**NOTE: Since each workspace is associated to only one user, you will have to switch back and forth using login
-commands to access each namespace properly.**
+---
+
+**NOTE: Since each workspace is associated to only one user, _you will have to switch back and forth using login
+commands to access each namespace properly_.**
+
+---
 
 Download your docker config json file from Quay and place it in $HOME/docker.config
 
-Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)
+| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
 
 Create secret in DEVWORKSPACE
 
-`oc create secret docker-registry redhat-appstudio-registry-pull-secret -n dev-release-team-tenant --from-file=.dockerconfigjson=$HOME/docker.config`
+```
+oc create secret docker-registry redhat-appstudio-registry-pull-secret -n dev-release-team-tenant \
+   --from-file=.dockerconfigjson=$HOME/docker.config
+```
 
 Create release plan
 
 `oc apply -f release/dev-workspace/release_plan.yaml -n dev-release-team-tenant`
 
-Login as a Cluster Admin User using Openshift Console
+| **Login as a Cluster Admin User using Openshift Console**
 
 Get the **cosign public key**
 
@@ -52,11 +59,11 @@ Update the Enterprise Contract Policy to include **cosign public key**
 
 Note: this resource will get applied at a later stage.
 
-Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)
+| **Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
 
 `sh release/managed-workspace/bootstrap.sh`
 
-Login as a Cluster Admin User using Openshift Console
+| **Login as a Cluster Admin User using Openshift Console**
 
 `sh release/managed-workspace/admin-bootstrap.sh`
 
@@ -72,7 +79,7 @@ cd release-utils
 ./setup-quay-push-secret.sh
 ```
 
-Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)
+| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
 
 Create applications and components
 
@@ -93,7 +100,7 @@ Verify that builds have started in DEVWORKSPACE
 Now we can set up the Application and Component for the **Deployment** scenario. This involves creating a copy of the 
 application and component in the MANAGEDWORKSPACE.
 
-Login as a Cluster Admin User using Openshift Console
+| **Login as a Cluster Admin User using Openshift Console**
 
 Clone the release-utils repo
 
@@ -103,29 +110,29 @@ cd release-utils
 ./copy-application.sh managed-release-team-tenant -a dev-release-team-tenant/simple-python
 ```
 
-Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)
+| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
 
 Once builds complete, The Integration Service will create Snapshots in DEVWORKSPACE.
 
-> oc get snapshot
+`oc get snapshot`
 
 The Interation Service will create **Releases** and release pipelines will execute in MANAGEDWORKSPACE
 
-Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) with accessing **Staging** cluster)
+| **Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) with accessing **Staging** cluster)**
 
-> oc get pr
+`oc get pr`
 
 Verify that the Release pipelines complete successfully.
 
-Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)
+| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
 
 For the Deployment scenario, consult the Deployment health via:
 
-> oc get release
+`oc get release`
 
 Locate the simple-python **Release**
 
-> oc get release/simple-python-tb5tc-gqgz2 -o json | jq .status.conditions
+`oc get release/simple-python-tb5tc-gqgz2 -o json | jq .status.conditions`
 
 You should see a **Condition** stating **AllComponentsDeployed**
 
