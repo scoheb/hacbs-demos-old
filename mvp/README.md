@@ -14,6 +14,12 @@ oc label namespaces dev-release-team-tenant argocd.argoproj.io/managed-by=gitops
 oc label namespaces managed-release-team-tenant argocd.argoproj.io/managed-by=gitops-service-argocd
 ```
 
+Download scripts from the release-utils repo
+
+```
+curl https://raw.githubusercontent.com/hacbs-release/release-utils/main/copy-application.sh -o copy-application.sh
+curl https://raw.githubusercontent.com/hacbs-release/release-utils/main/setup-quay-push-secret.sh -o setup-quay-push-secret.sh
+```
 
 Should you need to use different values follow these steps:
 
@@ -34,7 +40,7 @@ commands to access each namespace properly_.**
 
 Download your docker config json file from Quay and place it in $HOME/docker.config
 
-| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
+| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.stone-stg-host1.hjvn.p1.openshiftapps.com/) when accessing **Staging** cluster)**
 
 Create secret in DEVWORKSPACE
 
@@ -59,7 +65,7 @@ Update the Enterprise Contract Policy to include **cosign public key**
 
 Note: this resource will get applied at a later stage.
 
-| **Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
+| **Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.stone-stg-host1.hjvn.p1.openshiftapps.com/) when accessing **Staging** cluster)**
 
 `sh release/managed-workspace/bootstrap.sh`
 
@@ -71,15 +77,24 @@ Link service accounts to secrets in DEVWORKSPACE
 
 `oc secrets link pipeline redhat-appstudio-registry-pull-secret --for=pull,mount -n dev-release-team-tenant`
 
+| **Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.stone-stg-host1.hjvn.p1.openshiftapps.com/) when accessing **Staging** cluster)**
+
+
 Create secret that will be used by the Release Service pipeline account in MANAGEDWORKSPACE to push content to quay
 
 ```
-git clone https://github.com/hacbs-release/release-utils.git
-cd release-utils
-./setup-quay-push-secret.sh
+sh ./setup-quay-push-secret.sh
 ```
 
-| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
+Create secret that will be used by Release pipeline to upload content to Pyxis
+
+```
+The secret should contain 2 keys:
+- cert
+- key
+```
+
+| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.stone-stg-host1.hjvn.p1.openshiftapps.com/) when accessing **Staging** cluster)**
 
 Create applications and components
 
@@ -105,12 +120,10 @@ application and component in the MANAGEDWORKSPACE.
 Clone the release-utils repo
 
 ```
-git clone https://github.com/hacbs-release/release-utils.git
-cd release-utils
-./copy-application.sh managed-release-team-tenant -a dev-release-team-tenant/simple-python
+sh ./copy-application.sh managed-release-team-tenant -a dev-release-team-tenant/simple-python
 ```
 
-| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
+| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.stone-stg-host1.hjvn.p1.openshiftapps.com/) when accessing **Staging** cluster)**
 
 Once builds complete, The Integration Service will create Snapshots in DEVWORKSPACE.
 
@@ -118,13 +131,13 @@ Once builds complete, The Integration Service will create Snapshots in DEVWORKSP
 
 The Interation Service will create **Releases** and release pipelines will execute in MANAGEDWORKSPACE
 
-| **Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) with accessing **Staging** cluster)**
+| **Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.stone-stg-host1.hjvn.p1.openshiftapps.com/) with accessing **Staging** cluster)**
 
 `oc get pr`
 
 Verify that the Release pipelines complete successfully.
 
-| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.appstudio-stage.x99m.p1.openshiftapps.com) when accessing **Staging** cluster)**
+| **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.stone-stg-host1.hjvn.p1.openshiftapps.com/) when accessing **Staging** cluster)**
 
 For the Deployment scenario, consult the Deployment health via:
 

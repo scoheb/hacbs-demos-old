@@ -1,20 +1,3 @@
-apiVersion: appstudio.redhat.com/v1alpha1
-kind: ReleaseStrategy
-metadata:
-  name: mvp-strategy
-  namespace: managed-release-team-tenant
-spec:
-  pipeline: release
-  bundle: quay.io/hacbs-release/pipeline-release:main
-  policy: mvp-policy
-  params:
-    - name: extraConfigGitUrl
-      value: https://github.com/scoheb/strategy-configs.git
-    - name: extraConfigPath
-      value: mvp.yaml
-    - name: extraConfigRevision # optional field, default is main
-      value: main
-  serviceAccount: release-service-account
 ---
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: ReleaseStrategy
@@ -33,4 +16,27 @@ spec:
     - name: extraConfigRevision # optional field, default is main
       value: main
   serviceAccount: release-service-account
-
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleaseStrategy
+metadata:
+  name: mvp-push-to-external-registry-strategy
+  namespace: managed-release-team-tenant
+spec:
+  params:
+    - name: extraConfigGitUrl
+      value: https://github.com/scoheb/strategy-configs.git
+    - name: extraConfigPath
+      value: mvp.yaml
+    - name: extraConfigRevision
+      value: main
+    - name: pyxisServerType
+      value: stage
+    - name: pyxisSecret
+      value: pyxis
+    - name: tag
+      value: latest
+  pipeline: push-to-external-registry
+  bundle: quay.io/hacbs-release/pipeline-push-to-external-registry:main
+  policy: mvp-policy
+  serviceAccount: release-service-account
