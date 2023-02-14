@@ -6,7 +6,7 @@ metadata:
 spec:
   application: appstudio
   origin: dev-release-team-tenant
-  releaseStrategy: mvp-strategy
+  releaseStrategy: mvp-push-to-external-registry-strategy
 ---
 apiVersion: appstudio.redhat.com/v1alpha1
 kind: ReleasePlanAdmission

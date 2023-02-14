@@ -4,5 +4,5 @@ metadata:
   name: mvp-manual-release
   namespace: dev-release-team-tenant
 spec:
-  snapshot: appstudio-2zgtj
+  snapshot: appstudio-ccj6r
   releasePlan: demo
