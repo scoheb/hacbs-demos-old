@@ -88,10 +88,22 @@ sh ./setup-quay-push-secret.sh
 
 Create secret that will be used by Release pipeline to upload content to Pyxis
 
+To create the secret required by Pyxis, you need to create 2 files: cert and key
+
+To create cert:
+* Goto https://vault.devshift.net/ui/vault/secrets/hacbs/show/hacbs-internal-services/pyxis/staging/pyxis-certificates
+* Take content from hacbs-release-pyxis-staging.crt
+* echo $CONTENT | base64 -d > cert
+
+To create key:
+* Goto https://vault.devshift.net/ui/vault/secrets/hacbs/show/hacbs-internal-services/pyxis/staging/pyxis-certificates
+* take content from hacbs-release-pyxis-staging.key
+* echo $CONTENT | base64 -d > key
+
+then run:
+
 ```
-The secret should contain 2 keys:
-- cert
-- key
+oc create secret generic pyxis --from-file cert --from-file key -n managed-release-team-tenant
 ```
 
 | **Login as the Dev User (use [registration service](https://registration-service-toolchain-host-operator.apps.stone-stg-host1.hjvn.p1.openshiftapps.com/) when accessing **Staging** cluster)**
