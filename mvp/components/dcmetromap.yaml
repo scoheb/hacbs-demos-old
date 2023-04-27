@@ -4,6 +4,7 @@ metadata:
   name: dc-metro-map
   annotations:
     pipelinesascode: '1'
+    image.redhat.com/generate: 'true'
 spec:
   componentName: dc-metro-map
   application: appstudio
