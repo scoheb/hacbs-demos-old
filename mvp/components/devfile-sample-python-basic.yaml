@@ -4,6 +4,7 @@ metadata:
   name: devfile-sample-python-basic
   annotations:
     pipelinesascode: '1'
+    image.redhat.com/generate: 'true'
 spec:
   application: simple-python
   componentName: devfile-sample-python-basic
