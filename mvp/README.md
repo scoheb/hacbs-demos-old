@@ -75,7 +75,7 @@ Note: this resource will get applied at a later stage.
 
 Link service accounts to secrets in DEVWORKSPACE
 
-`oc secrets link pipeline redhat-appstudio-registry-pull-secret --for=pull,mount -n dev-release-team-tenant`
+`oc secrets link appstudio-pipeline redhat-appstudio-registry-pull-secret --for=pull,mount -n dev-release-team-tenant`
 
 | **Login as the Managed Workspace User (use [registration service](https://registration-service-toolchain-host-operator.apps.stone-stg-host1.hjvn.p1.openshiftapps.com/) when accessing **Staging** cluster)**
 
