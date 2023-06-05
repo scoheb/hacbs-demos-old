@@ -1,0 +1,25 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: EnterpriseContractPolicy
+metadata:
+  name: fbc-policy
+  namespace: managed-release-team-tenant
+spec:
+  description: Red Hat's enterprise requirements for FBC components
+  configuration:
+    exclude:
+      - hermetic_build_task.build_task_not_hermetic
+      - tasks.missing_required_task:sast-snyk-check
+      - tasks.missing_required_task:prefetch-dependencies
+      - attestation_task_bundle.unacceptable_task_bundle
+      - kind.kind_not_found
+      - labels.build_task_no_labels
+      - test.test_result_failures
+      - cve.found_cve_vulnerabilities
+      - java.java_foreign_dependencies
+  publicKey: k8s://tekton-chains/public-key
+  sources:
+    - data:
+        - "git::https://github.com/hacbs-contract/ec-policies.git//data"
+      name: ec-policies
+      policy:
+        - "git::https://github.com/hacbs-contract/ec-policies.git//policy"

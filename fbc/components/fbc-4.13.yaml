@@ -1,0 +1,24 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: 413-fbc-test
+  annotations:
+    pipelinesascode: '1'
+    appstudio.openshift.io/pac-provision: "request"
+spec:
+  application: fbc-e2e-test
+  componentName: 413-fbc-test
+  replicas: 1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+  source:
+    git:
+      context: ''
+      devfileUrl: >-
+        https://raw.githubusercontent.com/scoheb/fbc-test/main/4.13/devfile.yaml
+      dockerfileUrl: >-
+        https://raw.githubusercontent.com/scoheb/fbc-test/main/catalog.Dockerfile
+      url: 'https://github.com/scoheb/fbc-test'
+  targetPort: 50051

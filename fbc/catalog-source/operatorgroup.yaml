@@ -1,0 +1,8 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: my-group
+  namespace: my-namespace
+spec:
+  targetNamespaces:
+    - my-namespace

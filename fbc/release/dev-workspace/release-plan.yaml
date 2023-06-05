@@ -1,0 +1,10 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleasePlan
+metadata:
+  labels:
+    release.appstudio.openshift.io/auto-release: 'true'
+  name: manual-fbc-release
+spec:
+  application: fbc-example
+  displayName: manual-fbc-release
+  target: managed-release-team-tenant

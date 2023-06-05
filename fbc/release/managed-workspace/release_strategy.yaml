@@ -1,0 +1,32 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleaseStrategy
+metadata:
+  name: fbc-strategy
+  namespace: managed-release-team-tenant
+spec:
+  pipeline: fbc-release
+  bundle: quay.io/scoheb/pipeline-fbc-release:latest
+  policy: fbc-policy
+  serviceAccount: release-service-account
+  params:
+    - name: fromIndex
+      ## staging
+      # value: "quay.io/rh-osbs/iib-pub-pending:v4.13"
+      ## prod
+      # value: "quay.io/rh-osbs/iib-pub:v4.13"
+      value: "quay.io/scoheb/fbc-index-testing:latest"
+    - name: targetIndex
+      ## staging
+      # value: quay.io/redhat-pending/redhat----redhat-operator-index:v4.13
+      ## prod
+      # value: quay.io/redhat/redhat----redhat-operator-index:v4.13
+      value: "quay.io/scoheb/fbc-target-index-testing:latest"
+      # Signing
+    - name: requester
+      value: "shebert"
+    - name: binaryImage
+      value: "registry.redhat.io/openshift4/ose-operator-registry:v4.12"
+    - name: requestUpdateTimeout
+      value: "420"
+    - name: buildTimeoutSeconds
+      value: "480"
