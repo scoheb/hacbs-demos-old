@@ -7,11 +7,27 @@ We'll use
 - DEVWORKSPACE = dev-release-team-tenant
 - MANAGEDWORKSPACE = managed-release-team-tenant
 
+```
+oc create namespace dev-release-team-tenant
+oc create namespace managed-release-team-tenant
+```
+
 Ensure both have the label:
 
 ```
 oc label namespaces dev-release-team-tenant argocd.argoproj.io/managed-by=gitops-service-argocd
 oc label namespaces managed-release-team-tenant argocd.argoproj.io/managed-by=gitops-service-argocd
+```
+
+For namespaces not created via registration-service you will also need to set the namespaces up using the
+[hack/build/setup-namespace.sh](https://github.com/redhat-appstudio/infra-deployments/blob/main/hack/build/setup-namespace.sh)
+from [infra-deployments](https://github.com/redhat-appstudio/infra-deployments).
+
+```
+oc project dev-release-team-tenant
+$INFRA_DEPLOYMENTS_GIT_CLONE/hack/build/setup-namespace.sh
+oc project managed-release-team-tenant
+$INFRA_DEPLOYMENTS_GIT_CLONE/hack/build/setup-namespace.sh
 ```
 
 Download scripts from the release-utils repo
@@ -58,7 +74,7 @@ Create release plan
 Get the **cosign public key**
 
 `cosign public-key --key k8s://tekton-chains/signing-secrets`
- 
+
 Update the Enterprise Contract Policy to include **cosign public key**
 
 `vi release/managed-workspace/regular/ec-policy.yaml`
@@ -124,7 +140,7 @@ Verify that builds have started in DEVWORKSPACE
 
 `oc get pr`
 
-Now we can set up the Application and Component for the **Deployment** scenario. This involves creating a copy of the 
+Now we can set up the Application and Component for the **Deployment** scenario. This involves creating a copy of the
 application and component in the MANAGEDWORKSPACE.
 
 | **Login as a Cluster Admin User using Openshift Console**
