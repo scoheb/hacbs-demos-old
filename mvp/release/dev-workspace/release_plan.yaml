@@ -3,6 +3,7 @@ kind: ReleasePlan
 metadata:
   labels:
     release.appstudio.openshift.io/auto-release: 'true'
+    release.appstudio.openshift.io/standing-attribution: 'true'
   name: demo
 spec:
   application: appstudio
@@ -14,6 +15,7 @@ kind: ReleasePlan
 metadata:
   labels:
     release.appstudio.openshift.io/auto-release: 'true'
+    release.appstudio.openshift.io/standing-attribution: 'true'
   name: deploy-to-prod
 spec:
   application: simple-python
