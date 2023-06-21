@@ -5,3 +5,4 @@ resources:
   - release_links.yaml
   - persistent_volume_claim.yaml
   - service_account.yaml
+  - role_binding.yaml
